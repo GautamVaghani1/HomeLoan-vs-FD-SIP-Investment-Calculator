@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add your custom CSS file -->
+    <link rel="stylesheet" href="/static/css/benifit_style.css">
+    <title>Home Loan vs. Rent House</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 >Home Loan vs. Rent House</h2>
+        <form method="POST">
+            <!-- CSRF Token (You'll need to implement this in your Django template) -->
+            {% csrf_token %}
+
+            <p>Hello,{{data.name}}</p>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h3 class="card-title">Step 1: Making a Fixed Deposit for Your Down Payment</h3>
+                    <p>Your down payment is: <span class="text-info">{{data.downpayment}}</span></p>
+                    <p>Interest rate: 6% (based on the assumption of a standard bank rate)</p>
+                    <p>For {{data.years}} years</p>
+                    <p>Your Fixed Deposit return after {{data.years}} years will be: <span class="text-success">{{fd_return}}</span></p>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h3 class="card-title">Step 2: Starting a SIP (Systematic Investment Plan)</h3>
+                    <p>Your EMI is: <span class="text-info">{{data.emi}}</span></p>
+                    <p>Amount paid as rent: <span class="text-info">{{rent}}</span></p>
+                    <p>Invest the remaining amount in SIP with an expected annual return of 12%.</p>
+                    <p>Your SIP return after {{data.years}} years will be: <span class="text-success">{{sip_return}}</span></p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Financial Outcomes After {{data.years}} Years:</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Estimated house value after {{data.years}} years: <span class="text-info">{{data.value}}</span> (+ increased price)</li>
+                        <li class="list-group-item">Projected investment return after {{data.years}} years: <span class="text-success">{{final_amount}}</span></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
